@@ -1,0 +1,53 @@
+# Importing all the libraries with Python using Matplotlib and Seaborn
+Code----------------------------------
+
+#Import libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+def plot_data(rows, cols, lower_value, upper_value):
+    fig = plt.figure(figsize=(cols*3,rows*4))
+    for i in range(1, cols*rows + 1):
+        k = np.random.randint(lower_value,upper_value)
+        fig.add_subplot(rows, cols, i) # adding sub plot
+        gender = gender_values_to_labels[df.gender[k]]
+        ethnicity = eth_values_to_labels[df.ethnicity[k]]
+        age = df.age[k]
+        im = df.pixels[k]
+        plt.imshow(im, cmap='gray')
+        plt.axis('off')
+        plt.title(f'Gender:{gender}nAge:{age}nEthnicity:{ethnicity}')
+        plt.tight_layout()
+        plt.show()
+plot_data(rows=1, cols=7, lower_value=0, upper_value=len(df))
+
+
+
+Using Keras-------------------------------
+
+#importing libraries
+
+import keras
+import json
+import sys
+import tensorflow as tf
+from keras.layers import Input
+import numpy as np
+import argparse
+from keras_applications.resnext import ResNeXt50
+from keras.utils.data_utils import get_file
+import face_recognition
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import cv2
+from PIL import Image
+df=pd.read_csv("age_gender.csv")df.head()df1= pd.DataFrame(df)
+df1['pixels'] = df1.pixels.apply(lambda x: np.reshape(np.array(x.split(' '),dtype='float32'),(48,48)))
+df1['pixels']= df1['pixels']/255
+im = df1['pixels'][0]
+im
+plt.imshow(im, cmap='gray')
+plt.axis('off')
